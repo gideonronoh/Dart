@@ -1,0 +1,11 @@
+void main() {
+  greet('World');
+
+  var x = 20;
+  String name = 'John';
+  print(name);
+}
+
+void greet(String name) {
+  print('Hello, $name!');
+}
