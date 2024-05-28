@@ -1,0 +1,87 @@
+dependencies:
+  http: ^0.13.4
+
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+Future<void> logout() async {
+  final url = Uri.parse('https://example.com/logout/');  // Replace with your logout endpoint
+  final headers = {'Content-Type': 'application/json'};
+
+  try {
+    final response = await http.post(url, headers: headers);
+    
+    if (response.statusCode == 200) {
+      print('Logout successful');
+      // Navigate to login page or update UI accordingly
+    } else {
+      print('Logout failed: ${response.statusCode}');
+      // Handle logout failure (e.g., show an error message)
+    }
+  } catch (error) {
+    print('An error occurred: $error');
+    // Handle network or other errors
+  }
+}
+
+void main() {
+  logout();
+}
+
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Logout Example'),
+        ),
+        body: Center(
+          child: LogoutButton(),
+        ),
+      ),
+    );
+  }
+}
+
+class LogoutButton extends StatelessWidget {
+  Future<void> logout() async {
+    final url = Uri.parse('https://example.com/logout/');  // Replace with your logout endpoint
+    final headers = {'Content-Type': 'application/json'};
+
+    try {
+      final response = await http.post(url, headers: headers);
+
+      if (response.statusCode == 200) {
+        print('Logout successful');
+        // Navigate to login page or update UI accordingly
+      } else {
+        print('Logout failed: ${response.statusCode}');
+        // Handle logout failure (e.g., show an error message)
+      }
+    } catch (error) {
+      print('An error occurred: $error');
+      // Handle network or other errors
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        logout();
+      },
+      child: Text('Logout'),
+    );
+  }
+}
