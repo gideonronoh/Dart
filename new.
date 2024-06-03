@@ -1,0 +1,23 @@
+// Define a Person class
+class Person {
+  // Properties
+  String name;
+  int age;
+
+  // Constructor
+  Person(this.name, this.age);
+
+  // Method to display person's details
+  void displayDetails() {
+    print('Name: $name');
+    print('Age: $age');
+  }
+}
+
+void main() {
+  // Create a new Person object
+  Person person = Person('John Doe', 30);
+
+  // Call the method to display details
+  person.displayDetails();
+}
